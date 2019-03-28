@@ -1,0 +1,83 @@
+html{
+    height: 100%;
+}
+body{
+    margin:0 0;
+    padding: 0;
+    height: 100%;
+}
+#container{
+    width: 250px;
+    height: 400px;
+    margin: 0 auto;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+}
+#screen{
+    width: 100%;
+    height: 20%;
+}
+#top{
+    background-color: rgba(251, 255, 216, 0.98);
+    width: 100%;
+    height: 25%;
+    display: flex;
+
+}
+#close,#max {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: auto 5px;
+    vertical-align:middle;
+    line-height: 13px;
+    text-align: center;
+}
+#close{
+    background-color: #FC5652;
+    line-height: 13px;
+}
+#max {
+    background-color: #FDBC40;
+    line-height: 11px;
+}
+#result{
+    width: 100%;
+    height: 75%;
+    background-color: #999999;
+    text-align: right;
+    overflow: auto;  /*overflow属性表示超出边框后怎么办，auto含义就是如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。*/
+}
+#express{
+    width: 100%;
+    height: 50%;
+
+}
+#res{
+    width: 100%;
+    height: 50%;
+
+}
+#key{
+    width: 100%;
+    height: 80%;
+}
+.row{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+}
+.row span{
+    box-sizing: border-box;
+    width: 25%;
+    height: 100%;
+    display: flex;
+    background-color:#f2f2f2;
+    border: 1px solid #fff;
+}
+.row span.zero {
+    width: 50%;
+    height: 100%;
+
+}
