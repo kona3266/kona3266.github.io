@@ -1,0 +1,316 @@
+<!-- directives: [] -->
+<div id="content">
+  <ul>
+    <li>限价委托薄 limit order book</li>
+    <li>
+      <pre><code>	            价格       手/ 100 股
+	  卖五      20.00       3
+	  卖四      19.98       3
+	  卖三      19.97       13
+	  卖二      19.89       8
+	  卖一      19.88       34
+	  
+	  买一      19.82       8
+	  买二      19.81       6
+	  买三      19.80       24
+	  买四      19.79       20
+	  买五      19.70       10
+
+</code></pre>
+</li>
+    <li></li>
+    <li>卖方出价 ask price ，买方出价 bid price</li>
+    <li>交易遵循价格优先原则，对于卖方来说，价格越低越容易成交；对于买方来说，价格越高越容易成交。ask price &gt; bid price时，无法完成交易。对于价格相同的挂单，遵循时间优先原则，最先挂出这个价格的卖单被优先成交。</li>
+    <li>买方下单的类型：限价单，市价单。在上图的情形中，如果下了一个&quot;对手方最优价格申报&quot;的市价买单，系统就会帮你以目前“卖一”价下一个限价单。按照市价申报的订单很快会被成交，但是不保证能够成交。比如，卖一的价格下34手股票刚刚被成交，或者遭遇到了卖家撤单。那么订单就会被挂在19.88的买方限价单上。</li>
+    <li></li>
+    <li>市值 = 股价 * 股票数量
+      <p>	  净值 = 现金 + 持仓数量* 股价
+        <br />
+	  某公司IPO，发行了2000股股票。假设a, b, c, d四个人，每人打中了该公司的新股500股，价格是20。分布情况如下
+        <br />
+</p>
+
+      <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+        <colgroup>
+          <col class="org-left" />
+          <col class="org-left" />
+          <col class="org-left" />
+          <col class="org-left" />
+          <col class="org-left" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col" class="org-left"><b>名称</b></th>
+            <th scope="col" class="org-left"><b>a</b></th>
+            <th scope="col" class="org-left"><b>b</b></th>
+            <th scope="col" class="org-left"><b>c</b></th>
+            <th scope="col" class="org-left"><b>d</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="col" class="org-left"><b>持仓</b></td>
+            <td scope="col" class="org-left">500</td>
+            <td scope="col" class="org-left">500</td>
+            <td scope="col" class="org-left">500</td>
+            <td scope="col" class="org-left">500</td>
+          </tr>
+          <tr>
+            <td scope="col" class="org-left"><b>现金</b></td>
+            <td scope="col" class="org-left">10000</td>
+            <td scope="col" class="org-left">10000</td>
+            <td scope="col" class="org-left">10000</td>
+            <td scope="col" class="org-left">10000</td>
+          </tr>
+          <tr>
+            <td scope="col" class="org-left"><b>净值</b></td>
+            <td scope="col" class="org-left">20000</td>
+            <td scope="col" class="org-left">20000</td>
+            <td scope="col" class="org-left">20000</td>
+            <td scope="col" class="org-left">20000</td>
+          </tr>
+          <tr>
+            <td scope="col" class="org-left"><b>股价</b></td>
+            <td scope="col" class="org-left">20</td>
+            <td scope="col" class="org-left">20</td>
+            <td scope="col" class="org-left">20</td>
+            <td scope="col" class="org-left">20</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>	  假设a 以22元的价格卖100股给b，交易后分布情况如下。
+        <br />
+</p>
+
+      <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+        <colgroup>
+          <col class="org-left" />
+          <col class="org-left" />
+          <col class="org-left" />
+          <col class="org-left" />
+          <col class="org-left" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col" class="org-left"><b>名称</b></th>
+            <th scope="col" class="org-left"><b>a</b></th>
+            <th scope="col" class="org-left"><b>b</b></th>
+            <th scope="col" class="org-left"><b>c</b></th>
+            <th scope="col" class="org-left"><b>d</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="col" class="org-left"><b>持仓</b></td>
+            <td scope="col" class="org-left">400</td>
+            <td scope="col" class="org-left">600</td>
+            <td scope="col" class="org-left">500</td>
+            <td scope="col" class="org-left">500</td>
+          </tr>
+          <tr>
+            <td scope="col" class="org-left"><b>现金</b></td>
+            <td scope="col" class="org-left">12200</td>
+            <td scope="col" class="org-left">7800</td>
+            <td scope="col" class="org-left">10000</td>
+            <td scope="col" class="org-left">10000</td>
+          </tr>
+          <tr>
+            <td scope="col" class="org-left"><b>净值</b></td>
+            <td scope="col" class="org-left">21000</td>
+            <td scope="col" class="org-left">21000</td>
+            <td scope="col" class="org-left">20000</td>
+            <td scope="col" class="org-left">20000</td>
+          </tr>
+          <tr>
+            <td scope="col" class="org-left"><b>股价</b></td>
+            <td scope="col" class="org-left">22</td>
+            <td scope="col" class="org-left">22</td>
+            <td scope="col" class="org-left">22</td>
+            <td scope="col" class="org-left">22</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>	  此时a的持仓减少为400，b的持仓增加为600。b支付2200元现金给a。此时，所有人的净值是增加的，这时候公司什么都没有做，但是所有人的净值增加了。
+        <br />
+	  a继续用24元的价格卖100股给c，情况如下
+        <br />
+</p>
+
+      <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+        <colgroup>
+          <col class="org-left" />
+          <col class="org-left" />
+          <col class="org-left" />
+          <col class="org-left" />
+          <col class="org-left" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col" class="org-left"><b>名称</b></th>
+            <th scope="col" class="org-left"><b>a</b></th>
+            <th scope="col" class="org-left"><b>b</b></th>
+            <th scope="col" class="org-left"><b>c</b></th>
+            <th scope="col" class="org-left"><b>d</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="col" class="org-left"><b>持仓</b></td>
+            <td scope="col" class="org-left">300</td>
+            <td scope="col" class="org-left">600</td>
+            <td scope="col" class="org-left">600</td>
+            <td scope="col" class="org-left">500</td>
+          </tr>
+          <tr>
+            <td scope="col" class="org-left"><b>现金</b></td>
+            <td scope="col" class="org-left">14600</td>
+            <td scope="col" class="org-left">7800</td>
+            <td scope="col" class="org-left">7600</td>
+            <td scope="col" class="org-left">10000</td>
+          </tr>
+          <tr>
+            <td scope="col" class="org-left"><b>净值</b></td>
+            <td scope="col" class="org-left">21800</td>
+            <td scope="col" class="org-left">22200</td>
+            <td scope="col" class="org-left">22000</td>
+            <td scope="col" class="org-left">22000</td>
+          </tr>
+          <tr>
+            <td scope="col" class="org-left"><b>股价</b></td>
+            <td scope="col" class="org-left">24</td>
+            <td scope="col" class="org-left">24</td>
+            <td scope="col" class="org-left">24</td>
+            <td scope="col" class="org-left">24</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>	  a再将手上的300股抛售给d，此时成交价格达到了26。
+        <br />
+</p>
+
+      <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+        <colgroup>
+          <col class="org-left" />
+          <col class="org-left" />
+          <col class="org-left" />
+          <col class="org-left" />
+          <col class="org-left" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col" class="org-left"><b>名称</b></th>
+            <th scope="col" class="org-left"><b>a</b></th>
+            <th scope="col" class="org-left"><b>b</b></th>
+            <th scope="col" class="org-left"><b>c</b></th>
+            <th scope="col" class="org-left"><b>d</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="col" class="org-left"><b>持仓</b></td>
+            <td scope="col" class="org-left">0</td>
+            <td scope="col" class="org-left">600</td>
+            <td scope="col" class="org-left">600</td>
+            <td scope="col" class="org-left">800</td>
+          </tr>
+          <tr>
+            <td scope="col" class="org-left"><b>现金</b></td>
+            <td scope="col" class="org-left">22400</td>
+            <td scope="col" class="org-left">7800</td>
+            <td scope="col" class="org-left">7600</td>
+            <td scope="col" class="org-left">2200</td>
+          </tr>
+          <tr>
+            <td scope="col" class="org-left"><b>净值</b></td>
+            <td scope="col" class="org-left">22400</td>
+            <td scope="col" class="org-left">23400</td>
+            <td scope="col" class="org-left">23200</td>
+            <td scope="col" class="org-left">23000</td>
+          </tr>
+          <tr>
+            <td scope="col" class="org-left"><b>股价</b></td>
+            <td scope="col" class="org-left">26</td>
+            <td scope="col" class="org-left">26</td>
+            <td scope="col" class="org-left">26</td>
+            <td scope="col" class="org-left">26</td>
+          </tr>
+        </tbody>
+      </table>
+    </li>
+    <li>所有人的净值又都增加了，a的净值最低，唯一的区别就是a已经出场，离开了股市。
+      <p>	  a 离开股市之后，股市上所有人的资产在上市公司没有贡献任何利润的情况下，都是盈利的，钱从哪里来呢？
+        <br />
+	  这时候b继续以25元的价格卖200股给c
+        <br />
+</p>
+
+      <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+        <colgroup>
+          <col class="org-left" />
+          <col class="org-left" />
+          <col class="org-left" />
+          <col class="org-left" />
+          <col class="org-left" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col" class="org-left"><b>名称</b></th>
+            <th scope="col" class="org-left"><b>a</b></th>
+            <th scope="col" class="org-left"><b>b</b></th>
+            <th scope="col" class="org-left"><b>c</b></th>
+            <th scope="col" class="org-left"><b>d</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="col" class="org-left"><b>持仓</b></td>
+            <td scope="col" class="org-left">0</td>
+            <td scope="col" class="org-left">400</td>
+            <td scope="col" class="org-left">800</td>
+            <td scope="col" class="org-left">800</td>
+          </tr>
+          <tr>
+            <td scope="col" class="org-left"><b>现金</b></td>
+            <td scope="col" class="org-left">22400</td>
+            <td scope="col" class="org-left">12800</td>
+            <td scope="col" class="org-left">2600</td>
+            <td scope="col" class="org-left">2200</td>
+          </tr>
+          <tr>
+            <td scope="col" class="org-left"><b>净值</b></td>
+            <td scope="col" class="org-left">22400</td>
+            <td scope="col" class="org-left">22800</td>
+            <td scope="col" class="org-left">22600</td>
+            <td scope="col" class="org-left">22200</td>
+          </tr>
+          <tr>
+            <td scope="col" class="org-left"><b>股价</b></td>
+            <td scope="col" class="org-left">25</td>
+            <td scope="col" class="org-left">25</td>
+            <td scope="col" class="org-left">25</td>
+            <td scope="col" class="org-left">25</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>	  c 和 d 的现金之和是2600+2200 = 4800，意味着他们能承受b的400股的价格不超过 4800 / 400 = 12 元/股，此时的市值早已崩溃，没有人会交易。
+        <br />
+</p>
+    </li>
+    <li>上面的例子说明一个道理，股市是零和游戏。这里的假设是上市公司没有贡献任何利润分红，也没有印花税和手续费，所有股民也没有借配资炒股，一切成本忽略不计。股市产生的收益可以用一个公式概括
+      <blockquote>
+        <p>股市产生的收益=上市公司的利润+股民的投入-（印花税+手续费+上市公司圈走的钱 +融资利息+配资公司的利息+套利成功者的利润)
+          <br />
+不考虑上市公司利润和广义的交易手续费的情况下，股市是零和的，等价于没有赌场抽水的赌博。
+          <br />
+</p>
+      </blockquote>
+</li>
+    <li>观察下市值计算的公式，股价 * 股票数量，咋看起来很合理。但是细想就会发现，不是所有的股票都能够以当前的股价卖出。如果最新的股价是18，我们持仓20000股，18这个价格上只有300股可以叫卖，我们的净值却依然是假设我们20000股全部能以18这个价格瞬间卖完。</li>
+
+  </ul>
+</div>
+
